@@ -6,12 +6,12 @@ public class Job {
 
     private String jobID;
     private String jobName;
-    private String jobType;
+    private JobType jobType;
     private String jobDescription;
     private String jobSalary;
 
 
-    public Job(String jobID, String jobName, String jobType, String jobDescription, String jobSalary, Collection<Applicant> applicants) {
+    public Job(String jobID, String jobName, JobType jobType, String jobDescription, String jobSalary) {
         this.jobID = jobID;
         this.jobName = jobName;
         this.jobType = jobType;
@@ -35,11 +35,7 @@ public class Job {
         this.jobName = jobName;
     }
 
-    public String getJobType() {
-        return jobType;
-    }
-
-    public void setJobType(String jobType) {
+    public void setJobType(JobType jobType) {
         this.jobType = jobType;
     }
 
