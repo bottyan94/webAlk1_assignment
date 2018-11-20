@@ -20,6 +20,6 @@ public class JobDAOImpl implements JobDAO {
 
     @Override
     public Collection<Job> listJob() {
-        return null;
+        return this.jobs;
     }
 }
