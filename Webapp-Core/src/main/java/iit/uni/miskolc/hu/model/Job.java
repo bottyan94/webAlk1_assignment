@@ -4,14 +4,14 @@ import java.util.Collection;
 
 public class Job {
 
-    private String jobID;
+    private int jobID;
     private String jobName;
     private JobType jobType;
     private String jobDescription;
     private String jobSalary;
 
 
-    public Job(String jobID, String jobName, JobType jobType, String jobDescription, String jobSalary) {
+    public Job(int jobID, String jobName, JobType jobType, String jobDescription, String jobSalary) {
         this.jobID = jobID;
         this.jobName = jobName;
         this.jobType = jobType;
@@ -19,11 +19,11 @@ public class Job {
         this.jobSalary = jobSalary;
     }
 
-    public String getJobID() {
+    public int getJobID() {
         return jobID;
     }
 
-    public void setJobID(String jobID) {
+    public void setJobID(int jobID) {
         this.jobID = jobID;
     }
 
