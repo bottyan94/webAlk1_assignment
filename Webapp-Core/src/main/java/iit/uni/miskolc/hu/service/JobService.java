@@ -1,4 +1,4 @@
-package iit.uni.miskolc.hu;
+package iit.uni.miskolc.hu.service;
 
 import iit.uni.miskolc.hu.model.Job;
 
