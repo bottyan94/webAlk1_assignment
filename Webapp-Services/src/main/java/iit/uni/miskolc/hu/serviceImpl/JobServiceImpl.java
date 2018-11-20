@@ -1,10 +1,11 @@
-package iit.uni.miskolc.hu.service;
+package iit.uni.miskolc.hu.serviceImpl;
 
 import iit.uni.miskolc.hu.model.Job;
+import iit.uni.miskolc.hu.JobService;
 
 import java.util.Collection;
 
-public class JobServiceImpl implements JobService{
+public class JobServiceImpl implements JobService {
 
     @Override
     public Collection<Job> listJobs() {

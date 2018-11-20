@@ -1,6 +1,7 @@
-package iit.uni.miskolc.hu.service;
+package iit.uni.miskolc.hu.serviceImpl;
 
 import iit.uni.miskolc.hu.model.Applicant;
+import iit.uni.miskolc.hu.ApplicantService;
 
 import java.util.Collection;
 

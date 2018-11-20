@@ -1,4 +1,4 @@
-package iit.uni.miskolc.hu.service;
+package iit.uni.miskolc.hu;
 
 import iit.uni.miskolc.hu.model.Applicant;
 
