@@ -4,6 +4,7 @@ import iit.uni.miskolc.hu.service.ApplicantService;
 import iit.uni.miskolc.hu.DAO.ApplicantDAOImpl;
 import iit.uni.miskolc.hu.daoService.ApplicantDAO;
 import iit.uni.miskolc.hu.serviceImpl.ApplicantServiceImpl;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,7 @@ public class ApplicantMethodContext {
         return new ApplicantServiceImpl();
     }
     @Bean
+    @Required
     public ApplicantDAO applicantDAO(){
         return new ApplicantDAOImpl();
     }

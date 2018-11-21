@@ -2,6 +2,7 @@ package iit.uni.miskolc.hu.DAO;
 
 import iit.uni.miskolc.hu.daoService.ApplicantDAO;
 import iit.uni.miskolc.hu.model.Applicant;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,6 +13,7 @@ import static iit.uni.miskolc.hu.model.Education.UNIVERSITY;
 import static iit.uni.miskolc.hu.model.Genre.MAN;
 import static iit.uni.miskolc.hu.model.Genre.WOMAN;
 
+@Repository
 public class ApplicantDAOImpl implements ApplicantDAO {
 
     private Collection<Applicant> applicants;
