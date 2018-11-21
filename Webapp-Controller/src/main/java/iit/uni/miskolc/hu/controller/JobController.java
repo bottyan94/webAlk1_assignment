@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("Job")
+@RequestMapping("/job")
 public class JobController {
 
     private JobService jobService;

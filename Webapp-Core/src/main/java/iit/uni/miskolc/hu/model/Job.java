@@ -1,6 +1,6 @@
 package iit.uni.miskolc.hu.model;
 
-import java.util.Collection;
+
 
 public class Job {
 
@@ -9,14 +9,17 @@ public class Job {
     private JobType jobType;
     private String jobDescription;
     private String jobSalary;
+    private Education minEducation;
+    private String hrName;
 
-
-    public Job(int jobID, String jobName, JobType jobType, String jobDescription, String jobSalary) {
+    public Job(int jobID, String jobName, JobType jobType, String jobDescription, String jobSalary, Education minEducation, String hrName) {
         this.jobID = jobID;
         this.jobName = jobName;
         this.jobType = jobType;
         this.jobDescription = jobDescription;
         this.jobSalary = jobSalary;
+        this.minEducation = minEducation;
+        this.hrName = hrName;
     }
 
     public int getJobID() {
@@ -33,6 +36,10 @@ public class Job {
 
     public void setJobName(String jobName) {
         this.jobName = jobName;
+    }
+
+    public JobType getJobType() {
+        return jobType;
     }
 
     public void setJobType(JobType jobType) {
@@ -55,14 +62,20 @@ public class Job {
         this.jobSalary = jobSalary;
     }
 
-    @Override
-    public String toString() {
-        return "Job{" +
-                "jobID='" + jobID + '\'' +
-                ", jobName='" + jobName + '\'' +
-                ", jobType='" + jobType + '\'' +
-                ", jobDescription='" + jobDescription + '\'' +
-                ", jobSalary='" + jobSalary + '\'' +
-                '}';
+    public Education getMinEducation() {
+        return minEducation;
+    }
+
+    public void setMinEducation(Education minEducation) {
+        this.minEducation = minEducation;
+    }
+
+    public String gethrName() {
+        return hrName;
+    }
+
+    public void sethrName(String hrName) {
+        this.hrName = hrName;
     }
 }
+
