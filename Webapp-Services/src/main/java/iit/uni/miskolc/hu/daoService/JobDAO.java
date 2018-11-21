@@ -7,5 +7,6 @@ import java.util.Collection;
 
 public interface JobDAO {
     public Collection<Job> listJob();
+    public Collection<Job> listJobByHuf(int huf);
     public Collection<Job> listJobByType(JobType type);
 }

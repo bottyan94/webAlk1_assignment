@@ -18,9 +18,9 @@ public class JobDAOImpl implements JobDAO {
 
     public JobDAOImpl(){
         jobs = new ArrayList<>();
-        jobs.add(new Job(1,"Dog walking", CASUAL,"Playing with dog.","500",PRIMARY, "Tomi"));
-        jobs.add(new Job(2,"Cashier", CASUAL,"Work with money.","800",HIGH_SCHOOL, "Tomi"));
-        jobs.add(new Job(3,"Trainee", TRAINEE,"Making coffee.","1000",PRIMARY, "Tomi"));
+        jobs.add(new Job(1,"Dog walking", CASUAL,"Playing with dog.",500,PRIMARY, "Tomi"));
+        jobs.add(new Job(2,"Cashier", CASUAL,"Work with money.",800,HIGH_SCHOOL, "Tomi"));
+        jobs.add(new Job(3,"Trainee", TRAINEE,"Making coffee.",1000,PRIMARY, "Tomi"));
 
 
     }
@@ -28,6 +28,17 @@ public class JobDAOImpl implements JobDAO {
     @Override
     public Collection<Job> listJob() {
         return this.jobs;
+    }
+
+    @Override
+    public Collection<Job> listJobByHuf(int huf) {
+        Collection<Job> result = new ArrayList<>();
+
+        for (Job i : listJob()) {
+            if (i.getJobSalary() >= huf)
+                result.add(i);
+        }
+        return result;
     }
 
     @Override

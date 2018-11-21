@@ -37,5 +37,12 @@ public class JobController {
 
 
     }
+    @RequestMapping(value = "/byHuf", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Job> listJobByHuf(@RequestParam(value = "huf") int huf){
+        return jobService.listJobByHuf(huf);
+
+
+    }
 
 }

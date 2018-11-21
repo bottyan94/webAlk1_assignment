@@ -19,6 +19,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public Collection<Job> listJobByHuf(int huf) {
+        return jobDAO.listJobByHuf(huf);
+    }
+
+    @Override
     public Collection<Job> listJobByType(JobType jobType) {
         return jobDAO.listJobByType(jobType);
     }

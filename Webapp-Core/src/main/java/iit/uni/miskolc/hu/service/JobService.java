@@ -8,6 +8,6 @@ import java.util.Collection;
 public interface JobService {
 
     public Collection<Job> listJobs();
-
+    public Collection<Job> listJobByHuf(int huf);
     public Collection<Job> listJobByType(JobType jobType);
 }

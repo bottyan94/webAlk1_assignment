@@ -8,11 +8,11 @@ public class Job {
     private String jobName;
     private JobType jobType;
     private String jobDescription;
-    private String jobSalary;
+    private int jobSalary;
     private Education minEducation;
     private String hrName;
 
-    public Job(int jobID, String jobName, JobType jobType, String jobDescription, String jobSalary, Education minEducation, String hrName) {
+    public Job(int jobID, String jobName, JobType jobType, String jobDescription, int jobSalary, Education minEducation, String hrName) {
         this.jobID = jobID;
         this.jobName = jobName;
         this.jobType = jobType;
@@ -54,11 +54,11 @@ public class Job {
         this.jobDescription = jobDescription;
     }
 
-    public String getJobSalary() {
+    public int getJobSalary() {
         return jobSalary;
     }
 
-    public void setJobSalary(String jobSalary) {
+    public void setJobSalary(int jobSalary) {
         this.jobSalary = jobSalary;
     }
 
