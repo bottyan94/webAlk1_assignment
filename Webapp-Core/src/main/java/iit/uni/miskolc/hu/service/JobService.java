@@ -12,5 +12,5 @@ public interface JobService {
     public Collection<Job> listJobByHuf(int huf);
     public Collection<Job> listJobByEdu(Education education);
     public Collection<Job> listJobByType(JobType jobType);
-
+    public void addJob(Job job);
 }

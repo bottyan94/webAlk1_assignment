@@ -63,6 +63,11 @@ public class JobDAOImpl implements JobDAO {
         }
         return result;
     }
+    @Override
+    public void addJob(Job job) {
+
+        jobs.add(job);
+    }
 
 
 

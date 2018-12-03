@@ -30,27 +30,27 @@ public class JobController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public Collection<JobDTO> listJob(){
-        return Converter.marshalList((ArrayList<Job>) jobService.listJobs());
+        return Converter.marshalJobList((ArrayList<Job>) jobService.listJobs());
 
 
     }
     @RequestMapping(value = "/byType", method = RequestMethod.GET)
     @ResponseBody
     public Collection<JobDTO> listJobByType(@RequestParam(value = "type") JobType type){
-        return Converter.marshalList((ArrayList<Job>) jobService.listJobByType(type));
+        return Converter.marshalJobList((ArrayList<Job>) jobService.listJobByType(type));
 
 
     }
     @RequestMapping(value = "/byBiggerThanHuf", method = RequestMethod.GET)
     @ResponseBody
     public Collection<JobDTO> listJobByBiggerThanHuf(@RequestParam(value = "huf") int huf){
-        return Converter.marshalList((ArrayList<Job>) jobService.listJobByHuf(huf));
+        return Converter.marshalJobList((ArrayList<Job>) jobService.listJobByHuf(huf));
     }
 
     @RequestMapping(value = "/byEducation", method = RequestMethod.GET)
     @ResponseBody
     public Collection<JobDTO> listJobByEducation(@RequestParam(value = "edu") Education education){
-        return Converter.marshalList((ArrayList<Job>) jobService.listJobByEdu(education));
+        return Converter.marshalJobList((ArrayList<Job>) jobService.listJobByEdu(education));
     }
    /* @RequestMapping(value = "/byHr", method = RequestMethod.GET)
     @ResponseBody

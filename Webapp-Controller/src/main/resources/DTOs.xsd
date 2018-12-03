@@ -32,4 +32,12 @@
     <xs:attribute name="jobID" type="xs:integer" use="required"/>
     </xs:complexType>
 
+    <xs:complexType name="HrDTO">
+        <xs:sequence>
+            <xs:element name="hrName" type="xs:string"/>
+            <xs:element name="hrEmail" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="hrID" type="xs:integer" use="required"/>
+    </xs:complexType>
+
 </xs:schema>

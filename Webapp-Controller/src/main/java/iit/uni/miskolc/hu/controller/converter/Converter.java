@@ -1,7 +1,9 @@
 package iit.uni.miskolc.hu.controller.converter;
 
+import dto.HrDTO;
 import dto.JobDTO;
 import iit.uni.miskolc.hu.model.Education;
+import iit.uni.miskolc.hu.model.Hr;
 import iit.uni.miskolc.hu.model.Job;
 import iit.uni.miskolc.hu.model.JobType;
 
@@ -27,7 +29,7 @@ public class Converter {
         return jobDTO;
     }
 
-    public static ArrayList<JobDTO> marshalList(ArrayList<Job> jobs){
+    public static ArrayList<JobDTO> marshalJobList(ArrayList<Job> jobs){
         ArrayList<JobDTO> jobDTOs = new ArrayList<>();
         for (Job i:jobs){
             jobDTOs.add(Converter.marshalJob(i));
@@ -35,4 +37,23 @@ public class Converter {
         return jobDTOs;
     }
 
+
+
+
+    public static HrDTO marshalHr(Hr hr){
+        HrDTO hrDTO = new HrDTO();
+        hrDTO.setHrName(hr.getHrName());
+        hrDTO.setHrEmail(hr.getEmail());
+        hrDTO.setHrID(BigInteger.valueOf(hr.getHrID()));
+
+        return hrDTO;
+    }
+
+    public static ArrayList<HrDTO>marshalHrList(ArrayList<Hr> hrs){
+        ArrayList<HrDTO> hrDTOS =new ArrayList<>();
+        for (Hr i: hrs){
+            hrDTOS.add(Converter.marshalHr(i));
+        }
+        return hrDTOS;
+    }
 }

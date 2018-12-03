@@ -33,6 +33,7 @@ public class JobServiceImpl implements JobService {
     public Collection<Job> listJobByType(JobType jobType) {
         return jobDAO.listJobByType(jobType);
     }
-
+    @Override
+    public void addJob(Job job){jobDAO.addJob(job);}
 
 }
