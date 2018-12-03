@@ -1,6 +1,7 @@
 package iit.uni.miskolc.hu.DAO;
 
 import iit.uni.miskolc.hu.daoService.JobDAO;
+import iit.uni.miskolc.hu.model.Education;
 import iit.uni.miskolc.hu.model.Job;
 import iit.uni.miskolc.hu.model.JobType;
 
@@ -42,6 +43,17 @@ public class JobDAOImpl implements JobDAO {
     }
 
     @Override
+    public Collection<Job> listJobByEdu(Education education) {
+        Collection<Job> result = new ArrayList<>();
+
+        for (Job i : listJob()) {
+            if (i.getMinEducation() == education)
+                result.add(i);
+        }
+        return result;
+    }
+
+    @Override
     public Collection<Job> listJobByType(JobType type) {
         Collection<Job> result = new ArrayList<>();
 
@@ -51,6 +63,8 @@ public class JobDAOImpl implements JobDAO {
         }
         return result;
     }
+
+
 
 
 }

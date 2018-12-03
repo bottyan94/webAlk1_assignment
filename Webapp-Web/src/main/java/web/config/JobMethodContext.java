@@ -13,6 +13,7 @@ public class JobMethodContext {
 
     @Bean
     public JobService jobService(){return new JobServiceImpl(); }
+
     @Bean
     @Required
     public JobDAO jobDAO(){return new JobDAOImpl();}

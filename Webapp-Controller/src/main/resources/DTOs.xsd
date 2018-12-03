@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+
+    <xs:complexType name="jobDTO">
+    <xs:sequence>
+
+        <xs:element name="jobName" type="xs:string"/>
+        <xs:element name="jobType">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="CASUAL"/>
+                    <xs:enumeration value="DEVELOPER"/>
+                    <xs:enumeration value="TRAINEE"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        <xs:element name="jobDescription" type="xs:string"/>
+        <xs:element name="jobSalary" type="xs:int"/>
+        <xs:element name="jobEducation">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="PRIMARY"/>
+                    <xs:enumeration value="HIGH_SCHOOL"/>
+                    <xs:enumeration value="ACADEMY"/>
+                    <xs:enumeration value="UNIVERSITY"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        <xs:element name="hrName" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="jobID" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

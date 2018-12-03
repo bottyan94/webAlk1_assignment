@@ -1,6 +1,7 @@
 package iit.uni.miskolc.hu.serviceImpl;
 
 import iit.uni.miskolc.hu.daoService.JobDAO;
+import iit.uni.miskolc.hu.model.Education;
 import iit.uni.miskolc.hu.model.Job;
 import iit.uni.miskolc.hu.model.JobType;
 import iit.uni.miskolc.hu.service.JobService;
@@ -24,7 +25,14 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public Collection<Job> listJobByEdu(Education education) {
+        return jobDAO.listJobByEdu(education);
+    }
+
+    @Override
     public Collection<Job> listJobByType(JobType jobType) {
         return jobDAO.listJobByType(jobType);
     }
+
+
 }
