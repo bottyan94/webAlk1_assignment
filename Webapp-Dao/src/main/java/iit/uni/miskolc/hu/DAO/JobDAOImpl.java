@@ -18,7 +18,7 @@ public class JobDAOImpl implements JobDAO {
     private Collection<Job> jobs;
 
     public JobDAOImpl(){
-        jobs = new ArrayList<>();
+       jobs = new ArrayList<>();
         jobs.add(new Job(1,"Dog walking", CASUAL,"Playing with dog.",500,PRIMARY, "Tomi"));
         jobs.add(new Job(2,"Cashier", CASUAL,"Work with money.",800,HIGH_SCHOOL, "Tomi"));
         jobs.add(new Job(3,"Trainee", TRAINEE,"Making coffee.",1000,PRIMARY, "Tomi"));
@@ -63,9 +63,9 @@ public class JobDAOImpl implements JobDAO {
         }
         return result;
     }
+
     @Override
     public void addJob(Job job) {
-
         jobs.add(job);
     }
 

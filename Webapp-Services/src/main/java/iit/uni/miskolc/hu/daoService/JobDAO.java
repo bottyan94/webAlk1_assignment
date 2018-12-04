@@ -11,5 +11,6 @@ public interface JobDAO {
     public Collection<Job> listJobByHuf(int huf);
     public Collection<Job> listJobByEdu(Education education);
     public Collection<Job> listJobByType(JobType type);
+
     public void addJob(Job job);
 }

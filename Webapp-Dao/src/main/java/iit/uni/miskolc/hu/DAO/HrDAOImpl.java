@@ -14,9 +14,8 @@ public class HrDAOImpl implements HrDAO {
         hr = new ArrayList<>();
         hr.add(new Hr(1,"Bottyan Tamas","bottyan94@gmail.com"));
         hr.add(new Hr(2,"Test HR","test@test.com"));
+        hr.add(new Hr(2,"Tomi","test@test.com"));
 
     }
-
-
 
 }
