@@ -30,15 +30,12 @@ public class JobController {
     @ResponseBody
     public Collection<JobDTO> listJob() throws JobsListIsEmptyException {
         return Converter.marshalJobList((ArrayList<Job>) jobService.listJobs());
-
-
     }
+
     @RequestMapping(value = "/byType", method = RequestMethod.GET)
     @ResponseBody
     public Collection<JobDTO> listJobByType(@RequestParam(value = "type") JobType type) throws NotFoundException{
         return Converter.marshalJobList((ArrayList<Job>) jobService.listJobByType(type));
-
-
     }
     @RequestMapping(value = "/byBiggerThanHuf", method = RequestMethod.GET)
     @ResponseBody

@@ -24,15 +24,15 @@ public class Converter {
         jobDTO.setJobDescription(job.getJobDescription());
         jobDTO.setJobSalary(job.getJobSalary());
         jobDTO.setJobEducation(job.getMinEducation().toString());
-        jobDTO.setHrName(jobDTO.getHrName());
+        jobDTO.setHrName(job.gethrName());
 
         return jobDTO;
     }
 
     public static ArrayList<JobDTO> marshalJobList(ArrayList<Job> jobs){
         ArrayList<JobDTO> jobDTOs = new ArrayList<>();
-        for (Job i:jobs){
-            jobDTOs.add(Converter.marshalJob(i));
+        for (Job job:jobs){
+            jobDTOs.add(Converter.marshalJob(job));
         }
         return jobDTOs;
     }
@@ -51,8 +51,8 @@ public class Converter {
 
     public static ArrayList<HrDTO>marshalHrList(ArrayList<Hr> hrs){
         ArrayList<HrDTO> hrDTOS =new ArrayList<>();
-        for (Hr i: hrs){
-            hrDTOS.add(Converter.marshalHr(i));
+        for (Hr hr: hrs){
+            hrDTOS.add(Converter.marshalHr(hr));
         }
         return hrDTOS;
     }

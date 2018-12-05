@@ -2,6 +2,7 @@ package iit.uni.miskolc.hu.controller;
 
 import dto.JobDTO;
 import iit.uni.miskolc.hu.controller.converter.Converter;
+import iit.uni.miskolc.hu.exceptions.AlreadyExist;
 import iit.uni.miskolc.hu.model.Hr;
 import iit.uni.miskolc.hu.model.Job;
 import iit.uni.miskolc.hu.service.HrService;
@@ -23,7 +24,7 @@ public class HrController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     @ResponseBody
-    public void addJob(@RequestParam(value = "id")int id,@RequestParam(value = "name")String name,@RequestParam(value = "type") String type,@RequestParam(value = "desc")String desc,@RequestParam(value = "salary")int salary,@RequestParam(value = "hrName")String hrName,@RequestParam(value = "edu")String edu  ){
+    public void addJob(@RequestParam(value = "id")int id,@RequestParam(value = "name")String name,@RequestParam(value = "type") String type,@RequestParam(value = "desc")String desc,@RequestParam(value = "salary")int salary,@RequestParam(value = "hrName")String hrName,@RequestParam(value = "edu")String edu  )throws AlreadyExist {
        JobDTO jobDTO = new JobDTO();
        jobDTO.setJobID(BigInteger.valueOf(id));
        jobDTO.setJobName(name);
@@ -34,14 +35,10 @@ public class HrController {
        jobDTO.setJobEducation(edu);
        hrService.addJob(Converter.unmarshalJob(jobDTO));
     }
-  /*  @RequestMapping(value = "/byHr", method = RequestMethod.GET)
+    @RequestMapping(value = "/lastAdded", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<JobDTO> listJobByHrName(@RequestParam(value = "name") String name){
-        return Converter.marshalJobList((ArrayList<Job>) hrService.listJobByHrName(name));
+    public JobDTO lastAdded(){
+        return Converter.marshalJob(hrService.lastAdded());
     }
-    @RequestMapping(value = "/byHrName", method = RequestMethod.GET)
-    @ResponseBody
-    public Collection<Hr> listByHrName(@RequestParam(value = "name") String name){
-        return Converter.marshalHrList((ArrayList<Hr>)hrService.listHr(name));}*/
 
 }
