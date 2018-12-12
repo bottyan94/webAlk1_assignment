@@ -1,8 +1,7 @@
 package iit.uni.miskolc.hu.model;
 
 
-import iit.uni.miskolc.hu.exceptions.InvalidIDFormatExceptions;
-import iit.uni.miskolc.hu.exceptions.NonExistingEnumException;
+import iit.uni.miskolc.hu.exceptions.*;
 
 public class Job {
 

@@ -5,6 +5,8 @@ import dto.JobDTO;
 import iit.uni.miskolc.hu.controller.converter.Converter;
 import iit.uni.miskolc.hu.exceptions.*;
 import iit.uni.miskolc.hu.service.HrService;
+import iit.uni.miskolc.hu.service.JobService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +17,17 @@ import java.util.Collection;
 @RequestMapping("/hr")
 public class HrController {
     private HrService hrService;
+    private JobService jobService;
 
     public HrController(HrService hrService){
         this.hrService = hrService;
     }
 
+    @RequestMapping(value = "/listJobs", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<JobDTO> listJob() throws JobsListIsEmptyException, InvalidIDFormatExceptions {
+        return Converter.marshalJobListWithoutId(jobService.listJobs());
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     @ResponseBody
@@ -55,6 +63,8 @@ public class HrController {
     public Collection<HrDTO> listHr() throws HrListIsEmptyException, InvalidIDFormatExceptions {
         return Converter.marshalHrList(hrService.listHr());
     }
+
+
 }
 
 

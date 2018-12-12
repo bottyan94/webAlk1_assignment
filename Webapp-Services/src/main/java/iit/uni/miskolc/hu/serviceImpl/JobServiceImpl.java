@@ -34,6 +34,7 @@ public class JobServiceImpl implements JobService {
     }
     @Override
     public Collection<Job> listJobByEdu(Education education) {
+
         Collection<Job> jobList = new ArrayList<Job>();
 
         for (Job job : jobDAO.listJob()) {
