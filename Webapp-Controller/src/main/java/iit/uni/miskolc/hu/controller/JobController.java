@@ -27,28 +27,48 @@ public class JobController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public Collection<JobDTO> listJob() throws JobsListIsEmptyException, InvalidIDFormatExceptions {
-        return Converter.marshalJobListWithoutId(jobService.listJobs());
+        return Converter.marshalJobList(jobService.listJobs());
     }
 
     @RequestMapping(value = "/byType", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<JobDTO> listJobByType(@RequestParam(value = "type") JobType type) throws NotFoundException, InvalidIDFormatExceptions {
-        return Converter.marshalJobListWithoutId(jobService.listJobByType(type));
+    public Collection<JobDTO> listJobByType(@RequestParam(value = "type") String type) throws WrongHufValueExcception, NotFoundException, InvalidIDFormatExceptions {
+        return Converter.marshalJobList(jobService.listJobByType(type));
     }
 
     @RequestMapping(value = "/byEducation", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<JobDTO> listJobByEducation(@RequestParam(value = "edu") Education education) throws NotFoundException, InvalidIDFormatExceptions {
-        return Converter.marshalJobListWithoutId(jobService.listJobByEdu(education));
+    public Collection<JobDTO> listJobByEducation(@RequestParam(value = "edu") String education) throws WrongHufValueExcception, NotFoundException, InvalidIDFormatExceptions {
+        return Converter.marshalJobList(jobService.listJobByEdu(education));
+    }
+
+    @RequestMapping(value = "/byName", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<JobDTO> listJobByName(@RequestParam(value = "name") String name) throws NotFoundException, InvalidIDFormatExceptions {
+        return Converter.marshalJobList(jobService.listJobByName(name));
     }
 
     @RequestMapping(value = "/byBiggerThanHuf", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<JobDTO> listJobByBiggerThanHuf(@RequestParam(value = "huf") int huf) throws NotFoundException, InvalidIDFormatExceptions {
-        return Converter.marshalJobListWithoutId(jobService.listJobByHuf(huf));
+    public Collection<JobDTO> listJobByBiggerThanHuf(@RequestParam(value = "huf") int huf) throws WrongHufValueExcception, InvalidIDFormatExceptions {
+        return Converter.marshalJobList(jobService.listJobByHuf(huf));
     }
 
-
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Bad value try some other.")
+    @ExceptionHandler({ WrongHufValueExcception.class,InvalidIDFormatExceptions.class})
+    public void listIsEmptyHandler(){
+        //TODO
+    }
+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Not found. List is Empty!")
+    @ExceptionHandler({NotFoundException.class,JobsListIsEmptyException.class, HrListIsEmptyException.class})
+    public void notFoundHandler(){
+        //TODO
+    }
+    @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE, reason = "Can not be added to it. Already exists")
+    @ExceptionHandler({AlreadyExistException.class})
+    public void alreadyExistHandler(){
+        //TODO
+    }
 
 
 }

@@ -18,13 +18,19 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Collection<Job> listJobs() throws JobsListIsEmptyException {
-        if(jobDAO.listJob().isEmpty()) {throw new JobsListIsEmptyException();}
+        if (jobDAO.listJob().isEmpty()) {
+            throw new JobsListIsEmptyException();
+        }
         return jobDAO.listJob();
     }
 
     @Override
-    public Collection<Job> listJobByHuf(int huf) {
-        Collection<Job> jobList = new ArrayList<Job>();
+    public Collection<Job> listJobByHuf(int huf) throws WrongHufValueExcception {
+        if (huf <= 0) {
+            throw new WrongHufValueExcception();
+        }
+
+        Collection<Job> jobList = new ArrayList<>();
         for (Job job : jobDAO.listJob()) {
             if (job.getJobSalary() >= huf)
                 jobList.add(job);
@@ -32,26 +38,38 @@ public class JobServiceImpl implements JobService {
 
         return jobList;
     }
+
     @Override
-    public Collection<Job> listJobByEdu(Education education) {
-
-        Collection<Job> jobList = new ArrayList<Job>();
-
+    public Collection<Job> listJobByEdu(String education) throws NotFoundException {
+        Collection<Job> jobList = new ArrayList<>();
         for (Job job : jobDAO.listJob()) {
-            if (job.getEducation() == education)
+            if (job.getEducation().toString().equals(education)) {
                 jobList.add(job);
+            }
         }
+        if (jobList.isEmpty()){ throw new NotFoundException();}
         return jobList;
     }
 
     @Override
-    public Collection<Job> listJobByType(JobType type) {
-        Collection<Job> jobList = new ArrayList<Job>();
+    public Collection<Job> listJobByType(String type) throws NotFoundException {
+        Collection<Job> jobList = new ArrayList<>();
 
         for (Job job : jobDAO.listJob()) {
-            if (job.getJobType() == type)
+            if (job.getJobType().toString().equals(type))
                 jobList.add(job);
-        }
+        }if (jobList.isEmpty()){ throw new NotFoundException();}
+        return jobList;
+    }
+
+    @Override
+    public Collection<Job> listJobByName(String name) throws NotFoundException {
+        Collection<Job> jobList = new ArrayList<>();
+
+        for (Job job : jobDAO.listJob()) {
+            if (job.getJobName().contains(name))
+                jobList.add(job);
+        }if (jobList.isEmpty()){ throw new NotFoundException();}
         return jobList;
     }
 

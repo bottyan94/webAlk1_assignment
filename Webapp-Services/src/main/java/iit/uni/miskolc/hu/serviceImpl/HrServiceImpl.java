@@ -19,7 +19,9 @@ public class HrServiceImpl implements HrService {
 
     @Override
     public Collection<Hr> listHr() throws HrListIsEmptyException {
-        if(hrDAO.listHr().isEmpty()) {throw new HrListIsEmptyException();}
+        if (hrDAO.listHr().isEmpty()) {
+            throw new HrListIsEmptyException();
+        }
         return hrDAO.listHr();
     }
 
@@ -34,25 +36,28 @@ public class HrServiceImpl implements HrService {
     }
 
     @Override
-    public Job lastAdded() {
+    public Job lastAdded() throws NotFoundException {
+
+
         ArrayList<Job> lastAdded = new ArrayList(jobDAO.listJob());
+        if (lastAdded.isEmpty()) throw new NotFoundException();
 
         return lastAdded.get(lastAdded.size() - 1);
     }
 
     @Override
-    public Collection<Job> listJobsByHrName(String hrName) {
+    public Collection<Job> listJobsByHrName(String hrName) throws NotFoundException {
         Collection<Job> jobList = new ArrayList<>();
 
         for (Job job : jobDAO.listJob()) {
             if (job.gethrName().equals(hrName))
                 jobList.add(job);
         }
-
+        if (jobList.isEmpty()) {
+            throw new NotFoundException();
+        }
         return jobList;
     }
-
-
 
 
 }

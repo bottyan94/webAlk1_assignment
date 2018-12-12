@@ -37,26 +37,6 @@ public class Converter {
         }
         return jobDTOs;
     }
-    public static JobDTO marshalJobWithoutId(Job job){
-        JobDTO jobDTO = new JobDTO();
-        jobDTO.setJobName(job.getJobName());
-        jobDTO.setJobType(job.getJobType().toString());
-        jobDTO.setJobDescription(job.getJobDescription());
-        jobDTO.setJobSalary(job.getJobSalary());
-        jobDTO.setJobEducation(job.getEducation().toString());
-
-
-        return jobDTO;
-    }
-    public static Collection<JobDTO> marshalJobListWithoutId(Collection<Job> jobs) throws InvalidIDFormatExceptions {
-        Collection<JobDTO> jobDTOs = new ArrayList<>();
-        for (Job job : jobs) {
-            jobDTOs.add(Converter.marshalJobWithoutId(job));
-        }
-        return jobDTOs;
-    }
-
-
 
     public static HrDTO marshalHr(Hr hr) throws InvalidIDFormatExceptions {
         HrDTO hrDTO = new HrDTO();

@@ -8,7 +8,8 @@ import java.util.Collection;
 
 public interface HrService {
     public Collection<Hr> listHr() throws HrListIsEmptyException;
+    public Collection<Job> listJobsByHrName(String hrName) throws NotFoundException;
     public void addJob(Job job) throws AlreadyExistException, InvalidIDFormatExceptions;
-    public Job lastAdded();
-    public Collection<Job> listJobsByHrName(String hrName);
+    public Job lastAdded() throws NotFoundException;
+
 }

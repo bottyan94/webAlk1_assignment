@@ -10,9 +10,10 @@ import java.util.Collection;
 public interface JobService {
 
     public Collection<Job> listJobs() throws JobsListIsEmptyException;
-    public Collection<Job> listJobByHuf(int huf) throws NotFoundException;
-    public Collection<Job> listJobByEdu(Education education) throws NotFoundException;
-    public Collection<Job> listJobByType(JobType jobType) throws NotFoundException;
+    public Collection<Job> listJobByHuf(int huf) throws WrongHufValueExcception;
+    public Collection<Job> listJobByEdu(String education) throws WrongHufValueExcception, NotFoundException;
+    public Collection<Job> listJobByType(String jobType) throws WrongHufValueExcception, NotFoundException;
+    public Collection<Job> listJobByName(String name)throws NotFoundException;
 
 
 }

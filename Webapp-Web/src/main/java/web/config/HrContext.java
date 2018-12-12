@@ -16,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class HrContext {
     private final HrService hrService;
 
+
     @Autowired
     public HrContext(HrService hrService){this.hrService=hrService;}
 
