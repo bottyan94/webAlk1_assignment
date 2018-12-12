@@ -2,7 +2,6 @@ package iit.uni.miskolc.hu.DAO;
 
 import iit.uni.miskolc.hu.daoService.HrDAO;
 import iit.uni.miskolc.hu.model.Hr;
-import iit.uni.miskolc.hu.model.Job;
 
 import java.util.ArrayList;
 import java.util.Collection;

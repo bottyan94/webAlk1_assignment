@@ -55,18 +55,20 @@ public class JobController {
     }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Bad value try some other.")
-    @ExceptionHandler({ WrongHufValueExcception.class,InvalidIDFormatExceptions.class})
-    public void listIsEmptyHandler(){
+    @ExceptionHandler({WrongHufValueExcception.class, InvalidIDFormatExceptions.class})
+    public void listIsEmptyHandler() {
         //TODO
     }
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Not found. List is Empty!")
-    @ExceptionHandler({NotFoundException.class,JobsListIsEmptyException.class, HrListIsEmptyException.class})
-    public void notFoundHandler(){
+    @ExceptionHandler({NotFoundException.class, JobsListIsEmptyException.class, HrListIsEmptyException.class})
+    public void notFoundHandler() {
         //TODO
     }
+
     @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE, reason = "Can not be added to it. Already exists")
     @ExceptionHandler({AlreadyExistException.class})
-    public void alreadyExistHandler(){
+    public void alreadyExistHandler() {
         //TODO
     }
 

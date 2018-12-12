@@ -18,7 +18,7 @@ public class HrController {
     private HrService hrService;
 
 
-    public HrController(HrService hrService){
+    public HrController(HrService hrService) {
         this.hrService = hrService;
 
     }
@@ -36,8 +36,8 @@ public class HrController {
         jobDTO.setJobEducation(edu);
 
 
-       hrService.addJob(Converter.unmarshalJob(jobDTO));
-       return Converter.marshalJob(hrService.lastAdded());
+        hrService.addJob(Converter.unmarshalJob(jobDTO));
+        return Converter.marshalJob(hrService.lastAdded());
     }
 
     @RequestMapping(value = "/lastAdded", method = RequestMethod.GET)
@@ -59,20 +59,21 @@ public class HrController {
         return Converter.marshalHrList(hrService.listHr());
     }
 
-
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "List is Empty")
     @ExceptionHandler({JobsListIsEmptyException.class, HrListIsEmptyException.class})
-    public void listIsEmptyHandler(){
+    public void listIsEmptyHandler() {
         //TODO
     }
+
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Not found. Bad value try some other!")
-    @ExceptionHandler({NotFoundException.class, WrongHufValueExcception.class,InvalidIDFormatExceptions.class})
-    public void notFoundHandler(){
+    @ExceptionHandler({NotFoundException.class, WrongHufValueExcception.class, InvalidIDFormatExceptions.class})
+    public void notFoundHandler() {
         //TODO
     }
+
     @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE, reason = "Can not be added to it. Already exists")
     @ExceptionHandler({AlreadyExistException.class})
-    public void alreadyExistHandler(){
+    public void alreadyExistHandler() {
         //TODO
     }
 
