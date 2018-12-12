@@ -1,9 +1,8 @@
 package iit.uni.miskolc.hu.DAO;
 
 import iit.uni.miskolc.hu.daoService.JobDAO;
-import iit.uni.miskolc.hu.model.Education;
+import iit.uni.miskolc.hu.exceptions.*;
 import iit.uni.miskolc.hu.model.Job;
-import iit.uni.miskolc.hu.model.JobType;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +14,7 @@ import static iit.uni.miskolc.hu.model.JobType.*;
 public class JobDAOImpl implements JobDAO {
     private Collection<Job> jobs;
 
-    public JobDAOImpl() {
+    public JobDAOImpl() throws InvalidIDFormatExceptions{
         jobs = new ArrayList<>();
         jobs.add(new Job(1, "Dog walking", CASUAL, "Playing with dog.", 500, PRIMARY, "Tomi"));
         jobs.add(new Job(2, "Cashier", CASUAL, "Work with money.", 800, HIGH_SCHOOL, "Tomi"));
@@ -33,47 +32,6 @@ public class JobDAOImpl implements JobDAO {
     public Collection<Job> listJob() {
 
         return this.jobs;
-    }
-
-    @Override
-    public Collection<Job> listJobByHuf(int huf) {
-        Collection<Job> resultList = new ArrayList<>();
-
-        for (Job job : listJob()) {
-            if (job.getJobSalary() >= huf)
-                resultList.add(job);
-        }
-
-        return resultList;
-    }
-
-    @Override
-    public Collection<Job> listJobByEdu(Education education) {
-        Collection<Job> resultList = new ArrayList<>();
-
-        for (Job job : listJob()) {
-            if (job.getMinEducation() == education)
-                resultList.add(job);
-        }
-        return resultList;
-    }
-
-    @Override
-    public Job lastAdded() {
-        ArrayList<Job> lastAdded = new ArrayList(jobs);
-
-        return lastAdded.get(lastAdded.size() - 1);
-    }
-
-    @Override
-    public Collection<Job> listJobByType(JobType type) {
-        Collection<Job> resultList = new ArrayList<>();
-
-        for (Job job : listJob()) {
-            if (job.getJobType() == type)
-                resultList.add(job);
-        }
-        return resultList;
     }
 
     @Override

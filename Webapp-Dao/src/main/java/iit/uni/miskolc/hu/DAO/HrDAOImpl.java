@@ -19,4 +19,8 @@ public class HrDAOImpl implements HrDAO {
 
     }
 
+    @Override
+    public Collection<Hr> listHr() {
+        return this.hr;
+    }
 }

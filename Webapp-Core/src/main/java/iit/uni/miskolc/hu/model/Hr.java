@@ -1,5 +1,7 @@
 package iit.uni.miskolc.hu.model;
 
+import iit.uni.miskolc.hu.exceptions.InvalidIDFormatExceptions;
+
 public class Hr {
 
     private int hrID;
@@ -12,7 +14,8 @@ public class Hr {
         this.email = email;
     }
 
-    public int getHrID() {
+    public int getHrID() throws InvalidIDFormatExceptions{
+        if(hrID < 1){throw new InvalidIDFormatExceptions();}
         return hrID;
     }
 

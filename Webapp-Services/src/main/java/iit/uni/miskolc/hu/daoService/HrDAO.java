@@ -7,5 +7,6 @@ import java.util.Collection;
 
 public interface HrDAO {
 
+    public Collection<Hr> listHr();
 
 }

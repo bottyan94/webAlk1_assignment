@@ -1,6 +1,7 @@
 package web.config;
 
 import iit.uni.miskolc.hu.controller.HrController;
+import iit.uni.miskolc.hu.exceptions.InvalidIDFormatExceptions;
 import iit.uni.miskolc.hu.service.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,7 @@ public class HrContext {
     public HrContext(HrService hrService){this.hrService=hrService;}
 
     @Bean
-    public HrController hrController(){
+    public HrController hrController() throws InvalidIDFormatExceptions {
         return new HrController(hrService);
     }
 }

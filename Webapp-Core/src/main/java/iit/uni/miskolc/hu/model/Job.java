@@ -1,6 +1,8 @@
 package iit.uni.miskolc.hu.model;
 
 
+import iit.uni.miskolc.hu.exceptions.InvalidIDFormatExceptions;
+import iit.uni.miskolc.hu.exceptions.NonExistingEnumException;
 
 public class Job {
 
@@ -9,20 +11,22 @@ public class Job {
     private JobType jobType;
     private String jobDescription;
     private int jobSalary;
-    private Education minEducation;
+    private Education education;
     private String hrName;
 
-    public Job(int jobID, String jobName, JobType jobType, String jobDescription, int jobSalary, Education minEducation, String hrName) {
+    public Job(int jobID, String jobName, JobType jobType, String jobDescription, int jobSalary, Education education, String hrName) throws InvalidIDFormatExceptions {
+        if (jobID<1){throw new InvalidIDFormatExceptions();}
         this.jobID = jobID;
         this.jobName = jobName;
         this.jobType = jobType;
         this.jobDescription = jobDescription;
         this.jobSalary = jobSalary;
-        this.minEducation = minEducation;
+        this.education = education;
         this.hrName = hrName;
     }
 
-    public int getJobID() {
+    public int getJobID()throws InvalidIDFormatExceptions {
+        if (jobID<1){throw new InvalidIDFormatExceptions();}
         return jobID;
     }
 
@@ -62,12 +66,13 @@ public class Job {
         this.jobSalary = jobSalary;
     }
 
-    public Education getMinEducation() {
-        return minEducation;
+    public Education getEducation() {
+
+        return education;
     }
 
     public void setMinEducation(Education minEducation) {
-        this.minEducation = minEducation;
+        this.education = minEducation;
     }
 
     public String gethrName() {

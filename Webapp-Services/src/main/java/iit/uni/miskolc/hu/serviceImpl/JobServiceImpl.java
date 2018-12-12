@@ -6,9 +6,9 @@ import iit.uni.miskolc.hu.model.Education;
 import iit.uni.miskolc.hu.model.Job;
 import iit.uni.miskolc.hu.model.JobType;
 import iit.uni.miskolc.hu.service.JobService;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class JobServiceImpl implements JobService {
@@ -23,33 +23,36 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Collection<Job> listJobByHuf(int huf) throws NotFoundException{
-        Collection<Job> jobList =jobDAO.listJobByHuf(huf);
-        if ((jobList == null) || jobList.size()==0 || String.valueOf(jobList).isEmpty()){
-            throw new NotFoundException();
+    public Collection<Job> listJobByHuf(int huf) {
+        Collection<Job> jobList = new ArrayList<Job>();
+        for (Job job : jobDAO.listJob()) {
+            if (job.getJobSalary() >= huf)
+                jobList.add(job);
         }
 
-        return jobDAO.listJobByHuf(huf);
+        return jobList;
+    }
+    @Override
+    public Collection<Job> listJobByEdu(Education education) {
+        Collection<Job> jobList = new ArrayList<Job>();
+
+        for (Job job : jobDAO.listJob()) {
+            if (job.getEducation() == education)
+                jobList.add(job);
+        }
+        return jobList;
     }
 
     @Override
-    public Collection<Job> listJobByEdu(Education education) throws NotFoundException {
-        Collection<Job> jobList =jobDAO.listJobByEdu(education);
-        if ((jobList == null) || jobList.size()==0 || String.valueOf(jobList).isEmpty()){
-            throw new NotFoundException();
-        }
-        return jobDAO.listJobByEdu(education);
-    }
+    public Collection<Job> listJobByType(JobType type) {
+        Collection<Job> jobList = new ArrayList<Job>();
 
-    @Override
-    public Collection<Job> listJobByType(JobType jobType) throws NotFoundException {
-        Collection<Job> jobList =jobDAO.listJobByType(jobType);
-        if ((jobList == null) || jobList.size()==0 || String.valueOf(jobList).isEmpty()){
-            throw new NotFoundException();
+        for (Job job : jobDAO.listJob()) {
+            if (job.getJobType() == type)
+                jobList.add(job);
         }
-        return jobDAO.listJobByType(jobType);
+        return jobList;
     }
-
 
 
 }

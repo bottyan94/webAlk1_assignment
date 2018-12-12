@@ -2,6 +2,7 @@ package web.config;
 
 import iit.uni.miskolc.hu.DAO.JobDAOImpl;
 import iit.uni.miskolc.hu.daoService.JobDAO;
+import iit.uni.miskolc.hu.exceptions.*;
 import iit.uni.miskolc.hu.service.JobService;
 import iit.uni.miskolc.hu.serviceImpl.JobServiceImpl;
 import org.springframework.beans.factory.annotation.Required;
@@ -16,5 +17,5 @@ public class JobMethodContext {
 
     @Bean
     @Required
-    public JobDAO jobDAO(){return new JobDAOImpl();}
+    public JobDAO jobDAO() throws InvalidIDFormatExceptions {return new JobDAOImpl();}
 }

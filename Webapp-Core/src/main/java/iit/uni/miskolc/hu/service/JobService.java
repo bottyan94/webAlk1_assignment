@@ -11,8 +11,8 @@ public interface JobService {
 
     public Collection<Job> listJobs() throws JobsListIsEmptyException;
     public Collection<Job> listJobByHuf(int huf) throws NotFoundException;
-    public Collection<Job> listJobByEdu(Education education) throws NotFoundException;;
-    public Collection<Job> listJobByType(JobType jobType) throws NotFoundException;;
+    public Collection<Job> listJobByEdu(Education education) throws NotFoundException;
+    public Collection<Job> listJobByType(JobType jobType) throws NotFoundException;
 
 
 }

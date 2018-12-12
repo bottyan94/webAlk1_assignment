@@ -14,21 +14,45 @@ import java.util.Collection;
 public class HrServiceImpl implements HrService {
     @Autowired
     private JobDAO jobDAO;
+    @Autowired
+    private HrDAO hrDAO;
 
     @Override
-    public void addJob(Job job) throws AlreadyExist{
-       for(Job j : jobDAO.listJob()){
-           if (j.getJobID() == job.getJobID()){
-               throw new AlreadyExist();
-           }
-       }
-       jobDAO.addJob(job);
+    public Collection<Hr> listHr() throws HrListIsEmptyException {
+        if(hrDAO.listHr().isEmpty()) {throw new HrListIsEmptyException();}
+        return hrDAO.listHr();
+    }
+
+    @Override
+    public void addJob(Job job) throws AlreadyExistException, InvalidIDFormatExceptions {
+        for (Job j : jobDAO.listJob()) {
+            if (j.getJobID() == job.getJobID()) {
+                throw new AlreadyExistException();
+            }
+        }
+        jobDAO.addJob(job);
     }
 
     @Override
     public Job lastAdded() {
-        return jobDAO.lastAdded();
+        ArrayList<Job> lastAdded = new ArrayList(jobDAO.listJob());
+
+        return lastAdded.get(lastAdded.size() - 1);
     }
+
+    @Override
+    public Collection<Job> listJobsByHrName(String hrName) {
+        Collection<Job> jobList = new ArrayList<>();
+
+        for (Job job : jobDAO.listJob()) {
+            if (job.gethrName().equals(hrName))
+                jobList.add(job);
+        }
+
+        return jobList;
+    }
+
+
 
 
 }
