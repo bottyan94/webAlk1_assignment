@@ -21,7 +21,7 @@ public class HrContext {
     public HrContext(HrService hrService){this.hrService=hrService;}
 
     @Bean
-    public HrController hrController() throws InvalidIDFormatExceptions {
+    public HrController hrController(){
         return new HrController(hrService);
     }
 }

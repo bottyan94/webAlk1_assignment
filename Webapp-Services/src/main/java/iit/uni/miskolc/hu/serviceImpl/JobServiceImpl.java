@@ -2,9 +2,7 @@ package iit.uni.miskolc.hu.serviceImpl;
 
 import iit.uni.miskolc.hu.daoService.JobDAO;
 import iit.uni.miskolc.hu.exceptions.*;
-import iit.uni.miskolc.hu.model.Education;
 import iit.uni.miskolc.hu.model.Job;
-import iit.uni.miskolc.hu.model.JobType;
 import iit.uni.miskolc.hu.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 
